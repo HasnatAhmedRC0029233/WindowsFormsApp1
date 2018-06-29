@@ -24,8 +24,8 @@ namespace WindowsFormsApp1
 
         List<row> table = new List<row>();
 
-
-        private void calculateVelocity()
+        //this subroutine calculates velocity 
+        private void calculateVelocity() 
         {
             for (int i = 1; i < table.Count; i++)
             {
@@ -35,7 +35,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void calculateAcceleration()
+        //this subroutine calculates acceleration 
+        private void calculateAcceleration() 
         {
             for (int i = 1; i < table.Count; i++)
             {
@@ -49,7 +50,8 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        // this subroutine opens a CSV file and prcoesses it
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)  
         {
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "CSV Files|*.csv";
@@ -73,7 +75,7 @@ namespace WindowsFormsApp1
                         calculateAcceleration();
                     }
                 }
-                catch (IOException)
+                catch (IOException) // this subroutine tells the user that they have selected the wrong fromat so they are not just left with no information 
                 {
                     MessageBox.Show(openFileDialog1.FileName + " failed to open.");
                 }
@@ -88,7 +90,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void saveCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        // this subroutine saves a CSV file and the file name is selected between acceleration, velocity and alititude 
+        private void saveCSVToolStripMenuItem_Click(object sender, EventArgs e) 
         {
             saveFileDialog1.FileName = "";
             saveFileDialog1.Filter = "csv Files|*.csv";
@@ -113,8 +116,8 @@ namespace WindowsFormsApp1
             }
         }
 
-
-        private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
+        // this subroutine saves the graph as a PNG file and also if user selects a wrong format it gives an error message 
+        private void savePNGToolStripMenuItem_Click(object sender, EventArgs e) 
         {
             saveFileDialog1.FileName = "";
             saveFileDialog1.Filter = "png Files|*.png";
@@ -132,7 +135,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void velocityToolStripMenuItem_Click(object sender, EventArgs e)
+        //this subroutine imports the data from the smaple to create a graph that displays velocity by time 
+        private void velocityToolStripMenuItem_Click(object sender, EventArgs e)//
         {
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisX.IsMarginVisible = false;
@@ -155,6 +159,7 @@ namespace WindowsFormsApp1
             chart1.ChartAreas[0].RecalculateAxesScale();
         }
 
+        //this subroutine imports the data from the smaple to create a graph that displays acceleration by time 
         private void accelerationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -178,6 +183,7 @@ namespace WindowsFormsApp1
             chart1.ChartAreas[0].RecalculateAxesScale();
         }
 
+        //this subroutine imports the data from the smaple to create a graph that displays altitude by time
         private void altitudeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
